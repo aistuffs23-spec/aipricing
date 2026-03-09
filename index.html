@@ -3948,10 +3948,13 @@ function downloadSampleWorkbook() {
     const bytes = new Uint8Array(binary.length);
     for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
     const blob = new Blob([bytes], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = 'priceiq_sample_workbook.xlsx';
-    document.body.appendChild(a); a.click();
+    function downloadSampleWorkbook() {
+  const a = document.createElement("a");
+  a.href = "AI Pricing demo.xlsx";
+  a.download = "AI Pricing demo.xlsx";
+  document.body.appendChild(a);
+  a.click();
+}
     document.body.removeChild(a); URL.revokeObjectURL(url);
     toast('↓', 'Sample workbook downloaded');
   } catch(e) { toast('⚠️', 'Download failed: ' + e.message); }
